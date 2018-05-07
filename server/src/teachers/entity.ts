@@ -2,7 +2,7 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 't
 import { Exclude } from 'class-transformer';
 import { MinLength, IsString, IsEmail } from 'class-validator';
 import * as bcrypt from 'bcrypt'
-//import { Player } from '../games/entities';
+import  Evaluation from '../evaluations/entity';
 
 @Entity()
 export default class Teacher extends BaseEntity {
@@ -12,18 +12,21 @@ export default class Teacher extends BaseEntity {
 
   @IsString()
   @MinLength(2)
-  @Column('text')
+  @Column('text', {nullable:true})
   Name: string
 
   @IsEmail()
-  @Column('text')
+  @Column('text', {nullable:false})
   email: string
 
   @IsString()
   @MinLength(8)
-  @Column('text')
+  @Column('text', {nullable:false})
   @Exclude({ toPlainOnly: true })
   password: string
+
+  @OneToMany(() => Evaluation, e => e.teacher)
+  evaluations: Evaluation[]
 
   async setPassword(rawPassword: string) {
     const hash = await bcrypt.hash(rawPassword, 10)

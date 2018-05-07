@@ -1,9 +1,11 @@
-import { createConnection } from 'typeorm'
-import { DefaultNamingStrategy } from 'typeorm/naming-strategy/DefaultNamingStrategy'
-import { NamingStrategyInterface } from 'typeorm/naming-strategy/NamingStrategyInterface'
-import { snakeCase } from 'typeorm/util/StringUtils'
-import Teacher from './teachers/entity'
-//import { Player, Game } from './games/entities'
+import { createConnection } from 'typeorm';
+import { DefaultNamingStrategy } from 'typeorm/naming-strategy/DefaultNamingStrategy';
+import { NamingStrategyInterface } from 'typeorm/naming-strategy/NamingStrategyInterface';
+import { snakeCase } from 'typeorm/util/StringUtils';
+import Teacher from './teachers/entity';
+import Batch from './batches/entity';
+import Student from './students/entity';
+import Evaluation from './evaluations/entity'
 
 class CustomNamingStrategy extends DefaultNamingStrategy implements NamingStrategyInterface {
 
@@ -30,8 +32,9 @@ export default () =>
     url: process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres',
     entities: [
       Teacher,
-      Player,
-      Game
+      Student,
+      Evaluation,
+      Batch
     ],
     synchronize: true, // careful with this in production!
     logging: true,
