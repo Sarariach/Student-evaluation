@@ -5,11 +5,11 @@ import setupDb from './db'
 import LoginController from './logins/controller'
 //import GameController from './games/controller'
 import { verify } from './jwt'
-//import User from './users/entity'
+import Teacher from './teachers/entity'
 import * as Koa from 'koa'
 import {Server} from 'http'
-//import * as IO from 'socket.io'
-//import * as socketIoJwtAuth from 'socketio-jwt-auth'
+import * as IO from 'socket.io'
+import * as socketIoJwtAuth from 'socketio-jwt-auth'
 import {secret} from './jwt'
 
 const app = new Koa()
@@ -46,7 +46,7 @@ useKoaServer(app, {
       
       if (token) {
         const {id} = verify(token)
-        return User.findOneById(id)
+        return Teacher.findOne(id)
       }
     }
     return undefined
@@ -54,17 +54,17 @@ useKoaServer(app, {
 })
 
 io.use(socketIoJwtAuth.authenticate({ secret }, async (payload, done) => {
-  const user = await User.findOneById(payload.id)
-  if (user) done(null, user)
-  else done(null, false, `Invalid JWT user ID`)
+  const teacher = await Teacher.findOne(payload.id)
+  if (teacher) done(null, teacher)
+  else done(null, false, `Invalid JWT teacher ID`)
 }))
 
 io.on('connect', socket => {
-  const name = socket.request.user.firstName
-  console.log(`User ${name} just connected`)
+  const name = socket.request.user.name
+  console.log(`Teacher ${name} just connected`)
 
   socket.on('disconnect', () => {
-    console.log(`User ${name} just disconnected`)
+    console.log(`Teacher ${name} just disconnected`)
   })
 })
 
