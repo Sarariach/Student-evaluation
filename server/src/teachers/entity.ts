@@ -11,9 +11,8 @@ export default class Teacher extends BaseEntity {
   id?: number
 
   @IsString()
-  @MinLength(2)
-  @Column('text', {nullable:true})
-  Name: string
+  @Column('text')
+  name: string
 
   @IsEmail()
   @Column('text', {nullable:false})

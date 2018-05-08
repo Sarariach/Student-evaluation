@@ -12,11 +12,11 @@ export default class Student extends BaseEntity {
 
   @IsString()
   @Column('text',{nullable:false})
-  first_name: string
+  firstName: string
 
   @IsString()
   @Column('text', {nullable:false})
-  last_name: string
+  lastName: string
 
   @IsUrl()
   @Column('text',{nullable:false})

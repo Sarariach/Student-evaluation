@@ -1,9 +1,9 @@
 import 'reflect-metadata'
 import { Action, BadRequestError, useKoaServer } from 'routing-controllers'
 import setupDb from './db'
-//import UserController from './users/controller'
+import TeacherController from './teachers/controller'
 import LoginController from './logins/controller'
-//import GameController from './games/controller'
+//import BatchController from './batches/controller'
 import { verify } from './jwt'
 import Teacher from './teachers/entity'
 import * as Koa from 'koa'
@@ -11,6 +11,7 @@ import {Server} from 'http'
 import * as IO from 'socket.io'
 import * as socketIoJwtAuth from 'socketio-jwt-auth'
 import {secret} from './jwt'
+import BatchController from './batches/controller';
 
 const app = new Koa()
 const server = new Server(app.callback())
@@ -20,9 +21,10 @@ const port = process.env.PORT || 4000
 useKoaServer(app, {
   cors: true,
   controllers: [
-    UserController,
+    TeacherController,
     LoginController,
-    GameController
+    BatchController
+    
   ],
   authorizationChecker: (action: Action) => {
     const header: string = action.request.headers.authorization
