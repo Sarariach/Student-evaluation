@@ -1,24 +1,24 @@
-import {BaseEntity, Column, Entity, OneToMany, PrimaryColumn} from "typeorm";
-import {IsDateString, IsInt, IsNumber} from "class-validator";
+import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {IsDate, IsInt, IsNumber, IsDateString} from "class-validator";
+
 import Student from "../students/entity";
 
 @Entity()
 export default class Batch extends BaseEntity {
 
-  @IsInt()
-  @PrimaryColumn('integer')
-  id: number
+  @PrimaryGeneratedColumn()
+  id?: number
 
   @IsNumber()
-  @Column('integer')
+  @Column('integer',{nullable:false})
   batchNumber: number
 
   @IsDateString()
-  @Column('date', {nullable:false})
+  @Column('date')
   startDate: Date
 
-  @IsDateString()
-  @Column('date', {nullable:false})
+  @IsDate()
+  @Column('date')
   endDate: Date
 
   @OneToMany(() => Student, s => s.batch)
