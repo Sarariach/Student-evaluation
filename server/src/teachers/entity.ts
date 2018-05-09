@@ -10,10 +10,6 @@ export default class Teacher extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @IsString()
-  @Column('text')
-  name: string
-
   @IsEmail()
   @Column('text', {nullable:false})
   email: string
