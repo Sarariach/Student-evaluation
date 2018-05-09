@@ -19,7 +19,7 @@ const TopBar = (props) => {
         </Typography>
         {
           user &&
-          <Button color="inherit"> { user.firstName }</Button>
+          <Button color="inherit">{ user.firstName }</Button>
         }
 
         {
