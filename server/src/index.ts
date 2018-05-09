@@ -3,7 +3,7 @@ import { Action, BadRequestError, useKoaServer } from 'routing-controllers'
 import setupDb from './db'
 import TeacherController from './teachers/controller'
 import LoginController from './logins/controller'
-//import BatchController from './batches/controller'
+import StudentController from './students/controller'
 import { verify } from './jwt'
 import Teacher from './teachers/entity'
 import * as Koa from 'koa'
@@ -23,7 +23,8 @@ useKoaServer(app, {
   controllers: [
     TeacherController,
     LoginController,
-    BatchController
+    BatchController,
+    StudentController
     
   ],
   authorizationChecker: (action: Action) => {

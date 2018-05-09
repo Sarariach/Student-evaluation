@@ -1,14 +1,22 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "target/index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "test": "node_modules/.bin/mocha --require ts-node/register src/**/*.spec.ts",
+    "watch": "node_modules/.bin/tsc -w",
+    "compile": "node_modules/.bin/tsc -p ."
+  },
   "dependencies": {
     "@types/bcrypt": "^2.0.0",
     "@types/koa": "^2.0.45",
     "@types/koa-bodyparser": "^4.2.0",
     "@types/koa-multer": "^1.0.0",
     "@types/koa-router": "^7.0.28",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.0.6",
     "bcrypt": "^2.0.1",
     "express": "^4.16.3",
     "i": "^0.3.6",
@@ -18,12 +26,16 @@
     "koa-bodyparser": "^4.2.0",
     "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
+    "mocha": "^5.1.1",
     "pg": "6",
     "routing-controllers": "^0.7.7",
     "sequelize": "^4.37.7",
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0",
     "socketio-jwt-auth": "^0.0.6",
-    "typeorm": "^0.2.5"
+    "ts-node": "^6.0.3",
+    "ts-node-dev": "^1.0.0-pre.21",
+    "typeorm": "^0.2.5",
+    "typescript": "^2.8.3"
   }
 }
