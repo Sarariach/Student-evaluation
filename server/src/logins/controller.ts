@@ -26,4 +26,5 @@ export default class LoginController {
     const jwt = sign({ id: teacher.id! })
     return { jwt }
   }
+  
 }

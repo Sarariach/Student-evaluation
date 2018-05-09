@@ -75,6 +75,6 @@ io.on('connect', socket => {
 setupDb()
   .then(_ => {
     server.listen(port)
-    console.log(`Listening on port ${port}`)
+    console.log(`You have entered ${port}`)
   })
   .catch(err => console.error(err))
