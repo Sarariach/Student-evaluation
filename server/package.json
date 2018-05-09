@@ -10,6 +10,7 @@
     "compile": "node_modules/.bin/tsc -p ."
   },
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "@types/bcrypt": "^2.0.0",
     "@types/koa": "^2.0.45",
     "@types/koa-bodyparser": "^4.2.0",
@@ -28,6 +29,7 @@
     "koa-router": "^7.4.0",
     "mocha": "^5.1.1",
     "pg": "6",
+    "react": "^16.3.2",
     "routing-controllers": "^0.7.7",
     "sequelize": "^4.37.7",
     "socket.io": "^2.1.0",
