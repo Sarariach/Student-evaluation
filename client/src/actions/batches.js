@@ -42,10 +42,10 @@ const addBatch = batch => ({
     request
       .get(`${baseUrl}/batches`)
       .set('Authorization', `Bearer ${jwt}`)
-      .then(result => {
+      .then(response => {
         dispatch({
           type: GET_BATCHES,
-          payload: result.body
+          payload: response.body
         })
       })
       .catch(err => console.error(err))
