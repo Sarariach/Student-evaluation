@@ -26,11 +26,11 @@ renderBatch = (batch) => {
     return (<Card key={batch.id} className="batch-card">
       <CardContent>
       <Typography variant="headline" component="h2">
-            # BATCH{batch.batchTitle}
+            BATCH{batch.entity.batchNumber}
           </Typography>
           <Typography component="p">
-            Start date: {batch.startDate}<br />
-            End date: {batch.endDate}
+            Start date: {batch.entity.startDate}<br />
+            End date: {batch.entity.endDate}
           </Typography>
           </CardContent>
         <CardActions> 
